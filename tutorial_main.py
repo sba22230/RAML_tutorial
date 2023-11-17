@@ -16,11 +16,11 @@ if __name__ == "__main__":
 
     if not args.dev:
 
-        btr.BTR_Full(file_list, "%s.csv" % args.filename)
-        btr.BTR_Full(args.directory, "%s.csv" % args.filename)  # let TAASSC generate the filelist based on a folder name
-        btr.BTR_Full("%s/" % args.directory, "%s.csv" % args.filename,
+        btr.BTR_XML(file_list, "%s.csv" % args.filename)
+        btr.BTR_XML(args.directory, "%s.csv" % args.filename)  # let TAASSC generate the filelist based on a folder name
+        btr.BTR_XML("%s/" % args.directory, "%s.csv" % args.filename,
                      output=["xml"])  # generate summary count file, generate xml representation for each
-        btr.BTR_Full("%s/" % args.directory, "%s.csv" % args.filename, output=["xml",
+        btr.BTR_XML("%s/" % args.directory, "%s.csv" % args.filename, output=["xml",
                                                                 "vertical"])  # generate summary count file, generate xml representation  and vertical representation for each
 
     else:
