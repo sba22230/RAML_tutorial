@@ -1023,9 +1023,11 @@ def LGR_Full(filenames, outname, indices_dict=index_list, cats_d=cats, outdirnam
         filenames = glob.glob(filenames)
 
     for filename in filenames:
-        simple_fname = filename.split("/")[-1]  # grab the filename without all preceding folders
-        print(simple_fname)
-        text = open(filename).read()
+        #simple_fname = filename.split("/")[-1]  # grab the filename without all preceding folders
+        simple_fname = os.path.basename(filename)
+
+        print(f'Simple File name: ', simple_fname)
+        text = open(filename, encoding='utf-8').read()
         tag_output = LGR_Analysis(text, indices_dict, cats_d)
         output_list = [simple_fname]
         for x in indices_dict:
@@ -1039,7 +1041,10 @@ def LGR_Full(filenames, outname, indices_dict=index_list, cats_d=cats, outdirnam
         if output != None:
             # output xml
             if "xml" in output:
+                filename = os.path.basename(simple_fname)
+                
                 xmloutname = xmldir + "".join(simple_fname.split(".")[:-1]) + ".xml"  # format filename
+                print(f'XML Output Name: ', xmloutname)
                 output_xml(tag_output["tagged_text"], xmloutname, xml_element=None)
             # output vertical
             if "vertical" in output:
