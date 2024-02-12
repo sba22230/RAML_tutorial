@@ -881,7 +881,7 @@ def output_vertical(list_text, outname, ordered_output="simple",
         ordered_output = ['idx', 'word', 'lemma', 'tag', 'dep_rel', 'head idx', 'main_tag', 'spec_tag1', 'spec_tag2',
                           'spec_tag3', 'spec_tag4', 'spec_tag5', 'spec_tag6', 'semantic_tag1', 'semantic_tag2']
 
-    outf = open(outname, "w")  # create output file
+    outf = open(outname, "w", encoding="utf-8")  # create output file
     for sent_id, sent in enumerate(list_text):
         if len(
                 sent) < 1:  # for some reason, there are some blank "sentences" in the output (at the end of each document)
@@ -970,7 +970,7 @@ def output_xml(list_text, outname=False, xml_element=None):
         sent_text.text = " ".join(sentence_list)  # add sentence to sentence_text tag
 
     if outname != False:
-        outf = open(outname, "w")
+        outf = open(outname, "w", encoding="utf-8")
         outf.write(prettify(xml_element))
         outf.flush()
         outf.close()
@@ -1003,7 +1003,7 @@ def LGR_Full(filenames, outname, indices_dict=index_list, cats_d=cats, outdirnam
     noNorm = ["nwords", "wrd_length", "mean_nominal_deps", "relcl_nominal", "amod_nominal", "det_nominal",
               "prep_nominal", "poss_nominal", "cc_nominal", "mean_verbal_deps", "mlc", "mltu", "dc_c", "ccomp_c",
               "relcl_c", "infinitive_prop", "nonfinite_prop"]
-    outf = open(outname, "w")  # create output file
+    outf = open(outname, "w", encoding="utf-8")  # create output file
     outf.write("filename," + ",".join(indices_dict))  # write header
     if output != None:  # if user specifies output type:
         if "xml" in output:
@@ -1086,7 +1086,7 @@ def calcFromXml(xml_filename, indices_dict=index_list):
 
 def lgrXml(filenames, outname, indices_dict=index_list):
     print(outname)
-    outf = open(outname, "w")  # create output file
+    outf = open(outname, "w", encoding="utf-8")  # create output file
     # need to deal with wrd_length and mattr. This will require tweaking the calcFromXml() function
     ignoreL = ["wrd_length", "mattr", "np", "np_deps", "relcl_dep", "amod_dep", "det_dep", "prep_dep", "poss_dep",
                "cc_dep", "all_clauses", "finite_clause", "finite_ind_clause", "finite_dep_clause",
@@ -1116,7 +1116,7 @@ def lgrXml(filenames, outname, indices_dict=index_list):
 
 ### USED IN Kyle et al 2021, 2022 ###
 def LGR_XML(xml_files, outname, index_list, cats):  # for processing TMLE xml texts
-    outf = open(outname, "w")  # create output file
+    outf = open(outname, "w", encoding="utf-8")  # create output file
     ignore_list = "np np_deps relcl_dep amod_dep det_dep prep_dep poss_dep cc_dep all_clauses finite_clause finite_ind_clause finite_dep_clause finite_compl_clause finite_relative_clause nonfinite_clause vp_deps".split(
         " ")
 
